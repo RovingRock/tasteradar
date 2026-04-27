@@ -128,20 +128,20 @@ function Dashboard({ onLogout }) {
         <div className="sidebar-section">
           <h3>NAVIGATION</h3>
           <nav className="nav-menu">
-            <a href="#" className="nav-item active">
+            <a href="#overview" className="nav-item active">
               <span className="nav-icon">📊</span>
               <span>Market Overview</span>
               <span className="nav-arrow">›</span>
             </a>
-            <a href="#" className="nav-item">
+            <a href="#explorer" className="nav-item">
               <span className="nav-icon">🎯</span>
               <span>Opportunity Explorer</span>
             </a>
-            <a href="#" className="nav-item">
+            <a href="#pricing" className="nav-item">
               <span className="nav-icon">💰</span>
               <span>Pricing Intelligence</span>
             </a>
-            <a href="#" className="nav-item">
+            <a href="#strategy" className="nav-item">
               <span className="nav-icon">🤖</span>
               <span>AI Strategy Hub</span>
             </a>
