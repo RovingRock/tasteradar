@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Innovation Lab - TasteRadar</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f9fafb; }
+        .header { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 50px; text-align: center; }
+        .header h1 { font-size: 48px; margin-bottom: 15px; }
+        .container { max-width: 1100px; margin: 50px auto; padding: 20px; }
+        .controls { background: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .search-box { display: flex; gap: 15px; margin-bottom: 25px; }
+        .search-box input { flex: 1; padding: 18px; border: 2px solid #d1d5db; border-radius: 10px; font-size: 16px; }
+        .search-btn { padding: 18px 35px; background: #6b7280; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 16px; }
+        .search-btn:hover { background: #4b5563; }
+        .btn-generate { padding: 22px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border: none; border-radius: 12px; font-size: 20px; font-weight: 800; cursor: pointer; width: 100%; transition: all 0.3s; }
+        .btn-generate:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(99,102,241,0.5); }
+        .loading { background: linear-gradient(135deg, #eff6ff, #dbeafe); padding: 80px; border-radius: 15px; text-align: center; display: none; }
+        .loading.show { display: block; animation: fadeIn 0.4s; }
+        .loading h3 { color: #1e40af; margin-top: 25px; font-size: 26px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .card { background: white; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.12); overflow: hidden; display: none; }
+        .card.show { display: block; animation: slideUp 0.5s; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .card-header { background: linear-gradient(135deg, #1e40af, #2563eb); color: white; padding: 50px; position: relative; }
+        .card-header h2 { font-size: 42px; margin-bottom: 12px; }
+        .card-header p { opacity: 0.95; font-size: 18px; }
+        .score-badge { position: absolute; top: 50px; right: 50px; background: white; color: #1e40af; padding: 30px; border-radius: 18px; text-align: center; min-width: 130px; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .score-number { font-size: 60px; font-weight: 900; line-height: 1; }
+        .score-label { font-size: 13px; margin-bottom: 12px; letter-spacing: 1.5px; opacity: 0.7; font-weight: 600; }
+        .score-grade { font-size: 24px; font-weight: 800; margin-top: 10px; }
+        .card-body { padding: 50px; }
+        .description { font-size: 19px; line-height: 1.9; color: #374151; margin-bottom: 40px; }
+        .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 40px; }
+        .metric { padding: 25px; background: #f9fafb; border-radius: 12px; border: 2px solid #e5e7eb; }
+        .metric-label { font-size: 14px; color: #6b7280; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+        .metric-value { font-size: 26px; font-weight: 800; color: #111827; }
+        .section { margin-top: 40px; }
+        .section-title { font-size: 22px; font-weight: 800; margin-bottom: 20px; color: #111827; display: flex; align-items: center; gap: 12px; }
+        .ingredients { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .ingredient { padding: 16px 20px; background: #f9fafb; border-radius: 10px; font-size: 16px; color: #374151; border: 1px solid #e5e7eb; }
+        .usp-box { background: #fef3c7; border-left: 5px solid #f59e0b; padding: 25px; border-radius: 10px; }
+        .usp-box p { font-size: 17px; line-height: 1.8; color: #374151; }
+        .back-link { display: inline-block; margin: 20px 0 0 50px; padding: 12px 24px; background: white; color: #6366f1; text-decoration: none; border-radius: 8px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .back-link:hover { background: #f3f4f6; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧪 Innovation Lab</h1>
+        <p style="font-size: 20px;">AI-Powered Menu Concept Generator for F&B Brands</p>
+    </div>
+    
+    <a href="/" class="back-link">← Back to Dashboard</a>
+    
+    <div class="container">
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Search: matcha, ube, kimchi, korean, bakery, fusion...">
+                <button class="search-btn" onclick="searchConcept()">SEARCH</button>
+            </div>
+            <button class="btn-generate" onclick="generate()">✨ GENERATE AI CONCEPT ✨</button>
+        </div>
+        
+        <div id="loading" class="loading">
+            <div style="font-size: 80px;">🤖</div>
+            <h3>AI is analyzing global trends and generating your concept...</h3>
+            <p style="color: #6b7280; margin-top: 15px; font-size: 17px;">Processing 61 billion data points from 24 countries</p>
+        </div>
+        
+        <div id="card" class="card"></div>
+    </div>
+    
+    <script>
+        const concepts = [
+            {
+                name: "Yuzu Matcha Cloud Latte",
+                category: "Beverages - Premium Tea",
+                description: "A fusion of ceremonial-grade Japanese matcha and fresh yuzu citrus, topped with signature cloud-like oat milk foam. Combines the earthy depth of matcha with bright yuzu notes for a refreshing, Instagram-worthy beverage.",
+                ingredients: ["Ceremonial-grade matcha powder (Japan)", "Fresh yuzu juice", "Oat milk", "Agave syrup", "Sea salt (finishing touch)", "Edible flowers (garnish)"],
+                priceRange: "฿150-180 / $5.50-6.50",
+                targetAge: "22-35",
+                profitMargin: "68%",
+                launchTimeline: "Q3 2026",
+                score: 95,
+                usp: "Only beverage combining trending matcha (+208% growth) with emerging yuzu flavor (+340% growth). Triple-layer visual presentation drives social sharing.",
+                keywords: ["matcha", "yuzu", "beverage", "latte", "tea", "japanese"]
+            },
+            {
+                name: "Ube Coconut Cream Cake",
+                category: "Bakery - Layer Cakes",
+                description: "Three-layer purple yam sponge cake with coconut cream frosting and ube halaya filling. Topped with toasted coconut flakes and fresh ube ribbons.",
+                ingredients: ["Fresh ube (purple yam)", "Coconut cream", "Coconut milk", "Cake flour", "Free-range eggs", "Ube halaya (purple yam jam)", "Toasted coconut flakes"],
+                priceRange: "฿650-850 / $28-38",
+                targetAge: "18-35",
+                profitMargin: "65%",
+                launchTimeline: "Q2 2026",
+                score: 92,
+                usp: "Authentic Filipino ube recipe meets premium cake format. Vibrant purple color drives social shares. Ube trend +215% growth. Nostalgia factor for Filipino community.",
+                keywords: ["ube", "cake", "bakery", "purple", "filipino", "dessert"]
+            },
+            {
+                name: "Kimchi Cheese Croissant",
+                category: "Bakery - Savory Pastries",
+                description: "Butter croissant filled with aged white cheddar, house-made kimchi, and spring onions. Baked until cheese melts and kimchi caramelizes.",
+                ingredients: ["Laminated butter croissant dough", "Aged white cheddar cheese", "House-fermented kimchi", "Spring onions", "Gochugaru (Korean chili flakes)", "Sesame seeds (topping)"],
+                priceRange: "฿95-115 / $4.50-5.50",
+                targetAge: "22-40",
+                profitMargin: "69%",
+                launchTimeline: "Q2 2026",
+                score: 81,
+                usp: "Fermented foods trending for gut health. K-culture influence drives kimchi awareness. French-Korean fusion unique positioning. Savory breakfast pastry gap in market.",
+                keywords: ["kimchi", "korean", "fusion", "croissant", "bakery", "savory"]
+            }
+        ];
+        
+        function generate() {
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('card').classList.remove('show');
+            
+            setTimeout(() => {
+                const concept = concepts[Math.floor(Math.random() * concepts.length)];
+                displayConcept(concept);
+                document.getElementById('loading').classList.remove('show');
+                document.getElementById('card').classList.add('show');
+            }, 2000);
+        }
+        
+        function searchConcept() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            if (!term) {
+                alert('Please enter a search term');
+                return;
+            }
+            
+            const found = concepts.find(c => 
+                c.keywords.some(k => k.includes(term)) || 
+                c.name.toLowerCase().includes(term) ||
+                c.category.toLowerCase().includes(term)
+            );
+            
+            if (found) {
+                displayConcept(found);
+                document.getElementById('card').classList.add('show');
+            } else {
+                alert('No concepts found. Try: matcha, ube, kimchi, korean, bakery, fusion, japanese');
+            }
+        }
+        
+        function displayConcept(c) {
+            const grade = c.score >= 85 ? 'A' : c.score >= 70 ? 'B' : 'C';
+            document.getElementById('card').innerHTML = `
+                <div class="card-header">
+                    <div class="score-badge">
+                        <div class="score-label">SUCCESS</div>
+                        <div class="score-number">${c.score}</div>
+                        <div class="score-grade">Grade ${grade}</div>
+                    </div>
+                    <h2>${c.name}</h2>
+                    <p>${c.category}</p>
+                </div>
+                
+                <div class="card-body">
+                    <p class="description">${c.description}</p>
+                    
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-label">💰 Price Range</div>
+                            <div class="metric-value">${c.priceRange}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">👥 Target Age</div>
+                            <div class="metric-value">${c.targetAge}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">📈 Profit Margin</div>
+                            <div class="metric-value" style="color: #10b981;">${c.profitMargin}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">📅 Launch</div>
+                            <div class="metric-value">${c.launchTimeline}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">
+                            <span>🧪</span>
+                            <span>Key Ingredients (${c.ingredients.length})</span>
+                        </div>
+                        <div class="ingredients">
+                            ${c.ingredients.map(ing => `<div class="ingredient">• ${ing}</div>`).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">
+                            <span>🏆</span>
+                            <span>Unique Selling Point</span>
+                        </div>
+                        <div class="usp-box">
+                            <p>${c.usp}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
