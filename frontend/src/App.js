@@ -8,6 +8,33 @@ function App() {
 
   return (
     <div className="App">
+      {/* Header with Logo */}
+      <div style={{ 
+        background: 'white', 
+        padding: '20px 40px',
+        borderBottom: '1px solid #e5e7eb',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+      }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          {/* Logo */}
+          <img 
+            src="/tasteradar-logo.jpg" 
+            alt="TasteRadar" 
+            style={{ height: '50px' }}
+          />
+          
+          {/* Tagline */}
+          <p style={{ 
+            color: '#6b7280', 
+            fontSize: '14px',
+            margin: 0,
+            fontStyle: 'italic'
+          }}>
+            AI Powered Taste & Flavor Super-Intelligence
+          </p>
+        </div>
+      </div>
+
       {/* Tabs */}
       <div style={{ background: 'white', borderBottom: '2px solid #e5e7eb', padding: '0 40px' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', gap: '0' }}>
