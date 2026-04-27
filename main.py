@@ -27,4 +27,6 @@ if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=port)
 @app.route('/innovation-lab')
 def innovation_lab():
-    return render_template('innovation_lab.html')
+    from flask import Response
+    with open('templates/innovation_lab.html', 'r') as f:
+        return Response(f.read(), mimetype='text/html')
