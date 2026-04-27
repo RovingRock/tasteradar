@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import KPIModal from './KPIModal';
-import './Dashboard.css';
+
 
 function Dashboard({ onLogout }) {
   const [selectedKPI, setSelectedKPI] = useState(null);
