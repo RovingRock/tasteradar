@@ -18,8 +18,8 @@ function App() {
         <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Logo */}
           <img 
-            src="/tasteradar-logo.jpg" 
-            alt="TasteRadar" 
+            src="/TasteRadar%20logo.jpg" 
+            alt="TasteRadar AI Powered Taste & Flavor Super-Intelligence" 
             style={{ height: '50px' }}
           />
           
