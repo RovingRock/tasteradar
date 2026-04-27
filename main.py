@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 import os
 
 app = FastAPI(title="TasteRadar API")
@@ -13,6 +15,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 @app.get("/")
 def root():
     return {"message": "TasteRadar API", "status": "running"}
@@ -21,23 +26,11 @@ def root():
 def health():
     return {"status": "healthy"}
 
+@app.get("/innovation-lab")
+async def innovation_lab():
+    return FileResponse('static/innovation_lab.html')
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 10000))
     uvicorn.run(app, host="0.0.0.0", port=port)
-@app.route('/innovation-lab')
-def innovation_lab():
-    # Read the file and serve it directly without base template
-    import os
-    file_path = os.path.join(app.root_path, 'templates', 'innovation_lab.html')
-    with open(file_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-    from flask import make_response
-    response = make_response(content)
-    response.headers['Content-Type'] = 'text/html; charset=utf-8'
-    return response
-from fastapi.responses import FileResponse
-
-@app.get("/innovation-lab")
-async def innovation_lab():
-    return FileResponse('static/innovation_lab.html')
