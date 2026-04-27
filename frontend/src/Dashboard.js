@@ -672,6 +672,7 @@ function Dashboard() {
                         <li>Plant-Based Burger: Low sensitivity, premium viable</li>
                       </ul>
                     </div>
+                    </div>
                   </div>
                 </div>
               </div>
