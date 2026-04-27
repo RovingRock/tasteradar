@@ -36,3 +36,8 @@ def innovation_lab():
     response = make_response(content)
     response.headers['Content-Type'] = 'text/html; charset=utf-8'
     return response
+from fastapi.responses import FileResponse
+
+@app.get("/innovation-lab")
+async def innovation_lab():
+    return FileResponse('static/innovation_lab.html')
