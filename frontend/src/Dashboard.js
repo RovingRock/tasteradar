@@ -406,36 +406,34 @@ function Dashboard() {
                 </div>
 
                 <div className="content-card">
-  <div className="card-header">
-    <h3>Quick Stats</h3>
-    <p>Market snapshot</p>
-  </div>
-  <div className="card-body">
-    <div className="stat-list">
-      <div className="stat-item">
-        <span className="stat-label">Trending Ingredients (30d)</span>
-        <span className="stat-value">18</span>
-        <span className="stat-description">Ingredients showing +50% growth in social mentions</span>
-      </div>
-      <div className="stat-item">
-        <span className="stat-label">New Flavor Launches (30d)</span>
-        <span className="stat-value">34</span>
-        <span className="stat-description">New products detected across tracked brands</span>
-      </div>
-      <div className="stat-item">
-        <span className="stat-label">Category Growth Rate</span>
-        <span className="stat-value">+23%</span>
-        <span className="stat-description">Social media post volume increase month-over-month</span>
-      </div>
-      <div className="stat-item">
-        <span className="stat-label">Market Coverage</span>
-        <span className="stat-value">78%</span>
-        <span className="stat-description">Major F&B outlets tracked in SG/TH markets</span>
-      </div>
-    </div>
-  </div>
-</div>
-
+                  <div className="card-header">
+                    <h3>Quick Stats</h3>
+                    <p>Market snapshot</p>
+                  </div>
+                  <div className="card-body">
+                    <div className="stat-list">
+                      <div className="stat-item">
+                        <span className="stat-label">Trending Ingredients (30d)</span>
+                        <span className="stat-value">18</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">New Flavor Launches (30d)</span>
+                        <span className="stat-value">34</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Category Growth Rate</span>
+                        <span className="stat-value">+23%</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Market Coverage</span>
+                        <span className="stat-value">78%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           {activeView === 'opportunities' && (
             <div className="view-container">
               <div className="view-header">
