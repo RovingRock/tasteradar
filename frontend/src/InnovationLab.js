@@ -86,11 +86,7 @@ const InnovationLab = () => {
 
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(to bottom, #f9fafb 0%, #ffffff 100%)', paddingBottom: '50px' }}>
-      {/* Header */}
-      <div style={{ background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', color: 'white', padding: '60px 40px', textAlign: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '16px' }}>🧪 Innovation Lab</h1>
-        <p style={{ fontSize: '20px', opacity: 0.95 }}>AI-Powered Menu Concept Generator for F&B Brands</p>
-      </div>
+      
 
       {/* Main Content */}
       <div style={{ maxWidth: '1200px', margin: '50px auto', padding: '0 20px' }}>
