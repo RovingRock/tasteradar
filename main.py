@@ -27,6 +27,12 @@ if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=port)
 @app.route('/innovation-lab')
 def innovation_lab():
-    from flask import Response
-    with open('templates/innovation_lab.html', 'r') as f:
-        return Response(f.read(), mimetype='text/html')
+    # Read the file and serve it directly without base template
+    import os
+    file_path = os.path.join(app.root_path, 'templates', 'innovation_lab.html')
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    from flask import make_response
+    response = make_response(content)
+    response.headers['Content-Type'] = 'text/html; charset=utf-8'
+    return response
