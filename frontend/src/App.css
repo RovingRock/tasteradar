@@ -1665,3 +1665,22 @@ body {
     display: none;
   }
 }
+/* KPI Info Icon Styles */
+.kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.info-icon {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: help;
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.info-icon:hover {
+  color: rgba(255, 255, 255, 1);
+}
