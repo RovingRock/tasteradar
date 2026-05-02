@@ -131,6 +131,7 @@ const marketData = {
       outletsTracked: 1240,
       mentionsAnalyzed: 187500,
       trendsDetected: 156,
+      popularItems: 127,
       marketCoverage: 82
     },
     trending_items: [
