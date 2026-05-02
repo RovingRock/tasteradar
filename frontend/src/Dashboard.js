@@ -313,62 +313,76 @@ function Dashboard() {
               </div>
 
               <div className="kpi-grid">
-                <div className="kpi-card" onClick={() => handleKPIClick("trends")}>
-  <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'}}>
-    <TrendingUp size={24} />
+  <div className="kpi-card" onClick={() => handleKPIClick("outlets")}>
+    <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'}}>
+      <Activity size={24} />
+    </div>
+    <div className="kpi-content">
+      <div className="kpi-header">
+        <div className="kpi-value">{data.kpis.outletsTracked.toLocaleString()}</div>
+        <div className="info-icon" title="Total F&B establishments monitored">ⓘ</div>
+      </div>
+      <div className="kpi-label">Outlets Tracked</div>
+      <div className="kpi-change positive">+12% vs last month</div>
+    </div>
   </div>
-  <div className="kpi-content">
-    <div className="kpi-value">53</div>
-    <div className="kpi-label">Trends Detected</div>
-    <div className="kpi-change positive">+15% vs last month</div>
+
+  <div className="kpi-card" onClick={() => handleKPIClick("mentions")}>
+    <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'}}>
+      <MessageCircle size={24} />
+    </div>
+    <div className="kpi-content">
+      <div className="kpi-header">
+        <div className="kpi-value">{data.kpis.mentionsAnalyzed.toLocaleString()}</div>
+        <div className="info-icon" title="Total data points analyzed (menu images + reviews + social mentions including country-specific platforms like XiaoHongShu, Wongnai, TikTok)">ⓘ</div>
+      </div>
+      <div className="kpi-label">Mentions Analyzed</div>
+      <div className="kpi-change positive">+8% vs last month</div>
+    </div>
+  </div>
+
+  <div className="kpi-card" onClick={() => handleKPIClick("trends")}>
+    <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'}}>
+      <TrendingUp size={24} />
+    </div>
+    <div className="kpi-content">
+      <div className="kpi-header">
+        <div className="kpi-value">{data.kpis.trendsDetected}</div>
+        <div className="info-icon" title="Items showing significant growth (>50% Month-over-Month increase in mentions)">ⓘ</div>
+      </div>
+      <div className="kpi-label">Trends Detected</div>
+      <div className="kpi-change positive">+15% vs last month</div>
+    </div>
+  </div>
+
+  <div className="kpi-card" onClick={() => handleKPIClick("popular")}>
+    <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'}}>
+      <Target size={24} />
+    </div>
+    <div className="kpi-content">
+      <div className="kpi-header">
+        <div className="kpi-value">{data.kpis.popularItems}</div>
+        <div className="info-icon" title="Items with strong current momentum (mentioned 5 or more times across outlets)">ⓘ</div>
+      </div>
+      <div className="kpi-label">Popular Items</div>
+      <div className="kpi-change">Mentioned 5+ times</div>
+    </div>
+  </div>
+
+  <div className="kpi-card" onClick={() => handleKPIClick("coverage")}>
+    <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'}}>
+      <Target size={24} />
+    </div>
+    <div className="kpi-content">
+      <div className="kpi-header">
+        <div className="kpi-value">{data.kpis.marketCoverage}%</div>
+        <div className="info-icon" title="Percentage of digitally-trackable F&B outlets currently monitored in this market">ⓘ</div>
+      </div>
+      <div className="kpi-label">Market Coverage</div>
+      <div className="kpi-change positive">+5% vs last month</div>
+    </div>
   </div>
 </div>
-
-                <div className="kpi-card" onClick={() => handleKPIClick("mentions")}>
-                  <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'}}>
-                    <MessageCircle size={24} />
-                  </div>
-                  <div className="kpi-content">
-                    <div className="kpi-value">{data.kpis.mentionsAnalyzed.toLocaleString()}</div>
-                    <div className="kpi-label">Mentions Analyzed</div>
-                    <div className="kpi-change positive">+8% vs last month</div>
-                  </div>
-                </div>
-
-                <div className="kpi-card" onClick={() => handleKPIClick("trends")}>
-                  <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'}}>
-                    <TrendingUp size={24} />
-                  </div>
-                  <div className="kpi-content">
-                    <div className="kpi-value">{data.kpis.trendsDetected}</div>
-                    <div className="kpi-label">Trends Detected</div>
-                    <div className="kpi-change positive">+15% vs last month</div>
-                  </div>
-                </div>
-
-<div className="kpi-card" onClick={() => handleKPIClick("popular")}>
-  <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'}}>
-    <TrendingUp size={24} />
-  </div>
-  <div className="kpi-content">
-    <div className="kpi-value">50</div>
-    <div className="kpi-label">Popular Items</div>
-    <div className="kpi-change">Mentioned 5+ times</div>
-  </div>
-</div>
-            
-            <div className="kpi-card" onClick={() => handleKPIClick("coverage")}>
-                  <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'}}>
-                    <Target size={24} />
-                  </div>
-                  <div className="kpi-content">
-                    <div className="kpi-value">{data.kpis.marketCoverage}%</div>
-                    <div className="kpi-label">Market Coverage</div>
-                    <div className="kpi-change positive">+5% vs last month</div>
-                  </div>
-                </div>
-              </div>
-
               <div className="content-card">
                 <div className="card-header">
                   <h3>Top 10 Trending Items</h3>
