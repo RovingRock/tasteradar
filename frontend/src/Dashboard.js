@@ -313,16 +313,16 @@ function Dashboard() {
               </div>
 
               <div className="kpi-grid">
-                <div className="kpi-card" onClick={() => handleKPIClick("outlets")}>
-                  <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'}}>
-                    <Activity size={24} />
-                  </div>
-                  <div className="kpi-content">
-                    <div className="kpi-value">{data.kpis.outletsTracked.toLocaleString()}</div>
-                    <div className="kpi-label">Outlets Tracked</div>
-                    <div className="kpi-change positive">+12% vs last month</div>
-                  </div>
-                </div>
+                <div className="kpi-card" onClick={() => handleKPIClick("trends")}>
+  <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'}}>
+    <TrendingUp size={24} />
+  </div>
+  <div className="kpi-content">
+    <div className="kpi-value">53</div>
+    <div className="kpi-label">Trends Detected</div>
+    <div className="kpi-change positive">+15% vs last month</div>
+  </div>
+</div>
 
                 <div className="kpi-card" onClick={() => handleKPIClick("mentions")}>
                   <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'}}>
