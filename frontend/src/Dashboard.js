@@ -320,14 +320,11 @@ function Dashboard() {
       <Activity size={24} />
     </div>
     <div className="kpi-content">
-      <div className="kpi-header">
-        <div className="kpi-value">{data.kpis.outletsTracked.toLocaleString()}</div>
-        <div className="info-icon" title="Total F&B establishments monitored">ⓘ</div>
-      </div>
-      <div className="kpi-label">Outlets Tracked</div>
-      <div className="kpi-change positive">+12% vs last month</div>
-    </div>
-  </div>
+  <div className="kpi-value">1,294</div>
+  <div className="kpi-label">Outlets Tracked</div>
+  <div className="kpi-change positive">+12% vs last month</div>
+</div>
+<div className="info-icon" title="Total F&B establishments monitored">ⓘ</div>
 
   <div className="kpi-card" onClick={() => handleKPIClick("mentions")}>
     <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'}}>
