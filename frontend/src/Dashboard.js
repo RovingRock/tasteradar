@@ -33,7 +33,7 @@ const marketData = {
     name: "Singapore",
     kpis: {
       outletsTracked: 1294,
-      mentionsAnalyzed: 870,
+      mentionsAnalyzed: 2006,
       trendsDetected: 53,
       marketCoverage: 81
     },
@@ -346,7 +346,18 @@ function Dashboard() {
                   </div>
                 </div>
 
-                <div className="kpi-card" onClick={() => handleKPIClick("coverage")}>
+<div className="kpi-card" onClick={() => handleKPIClick("popular")}>
+  <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'}}>
+    <TrendingUp size={24} />
+  </div>
+  <div className="kpi-content">
+    <div className="kpi-value">50</div>
+    <div className="kpi-label">Popular Items</div>
+    <div className="kpi-change">Mentioned 5+ times</div>
+  </div>
+</div>
+            
+            <div className="kpi-card" onClick={() => handleKPIClick("coverage")}>
                   <div className="kpi-icon" style={{background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'}}>
                     <Target size={24} />
                   </div>
