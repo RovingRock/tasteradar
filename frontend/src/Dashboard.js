@@ -33,9 +33,9 @@ const marketData = {
     name: "Singapore",
     kpis: {
       outletsTracked: 1294,
-      mentionsAnalyzed: 125600,
-      trendsDetected: 143,
-      marketCoverage: 78
+      mentionsAnalyzed: 870,
+      trendsDetected: 53,
+      marketCoverage: 81
     },
     trending_items: [
       { rank: 1, item: "Yuzu Lemon Tea", category: "Beverage", growth: 47, mentions: 234, avg_price: 4.50, min_price: 3.80, max_price: 6.20, competitors: 8, menu_penetration: 12, social_demand: 89 },
