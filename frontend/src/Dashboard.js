@@ -32,7 +32,7 @@ const marketData = {
   singapore: {
     name: "Singapore",
     kpis: {
-      outletsTracked: 847,
+      outletsTracked: 1294,
       mentionsAnalyzed: 125600,
       trendsDetected: 143,
       marketCoverage: 78
