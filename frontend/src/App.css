@@ -1665,22 +1665,27 @@ body {
     display: none;
   }
 }
-/* KPI Info Icon Styles */
-.kpi-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+/* KPI Info Icon Styles - Top Right Corner */
+.kpi-card {
+  position: relative;
 }
 
-.info-icon {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+.kpi-card .info-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.3);
   cursor: help;
-  transition: color 0.2s;
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s;
   user-select: none;
 }
 
-.info-icon:hover {
-  color: rgba(255, 255, 255, 1);
+.kpi-card:hover .info-icon {
+  opacity: 1;
+}
+
+.kpi-card .info-icon:hover {
+  color: rgba(0, 0, 0, 0.6);
 }
