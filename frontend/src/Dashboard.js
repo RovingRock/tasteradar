@@ -1,4 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { /* your imports */ } from 'recharts';
+import { /* your imports */ } from 'lucide-react';
+import KPIModal from './KPIModal';
+import { thailandDrillDownData, singaporeDrillDownData } from './mockDrillDownData';
+
+// ADD THIS CSS BLOCK HERE
+const styles = `
+  .kpi-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .info-icon {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: help;
+    transition: color 0.2s;
+    user-select: none;
+  }
+
+  .info-icon:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+`;
+
+// Inject the styles
+const styleSheet = document.createElement("style");
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);
+
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   BarChart, Bar, ScatterChart, Scatter, 
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
